@@ -2,8 +2,8 @@
 
 int main(int argc, char *argv[]) {
 
-    int node_value;
-    FILE *file = fopen(argv[1], "r");
+    int node_value = 0;
+    FILE *file = fopen("../input", "r");
 
     if(file == NULL)
     {
@@ -16,12 +16,17 @@ int main(int argc, char *argv[]) {
         {
             fscanf(file, "%d", &node_value);
             list_append(l, node_value);
-
+        }
+        fclose(file);
+        FILE *result = fopen("../result", "w");
+        if(is_palindrome(l))
+        {
+            fputs("True", result);
+            fclose(result);
+        }else{
+            fputs("False", result);
+            fclose(result);
         }
     }
-    fclose(file);
-
-    is_palindrome(argv[1]);
-
     return 0;
 }

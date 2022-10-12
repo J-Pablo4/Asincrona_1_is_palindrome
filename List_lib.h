@@ -10,8 +10,10 @@
 
 typedef struct list List;
 
-void is_palindrome(List *list);
+int is_palindrome(List *list);
 List* new_list();
 void list_append(List *list, int value_to_append);
+void print_list(List *list);
+int delete_at(List *list, int index);
 
 #endif //ASINCRONA_1_LIST_LIB_H
