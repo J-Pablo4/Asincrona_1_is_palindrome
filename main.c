@@ -1,10 +1,8 @@
-#include <stdio.h>
-#include <string.h>
+#include "List_lib.h"
 
 int main(int argc, char *argv[]) {
 
-    if (!strcmp(argv[1], "is_palindrome"))
-        printf("Hurray_is_palindrome");
+    FILE *file = fopen(argv[1], "r");
 
     return 0;
 }
