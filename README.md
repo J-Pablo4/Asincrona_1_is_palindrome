@@ -12,5 +12,4 @@ Returns **True**
 Returns **False**
 
 ## Restrictions and Considerations
-The input file must contain only numbers, and they must be separated with a break of line. It is also important that the last line of the file have a number and not an empty line for the program to work properly.
-The input file must be located on the same folder as the program and must be named **input**.
+The input file must contain only numbers, and they must be separated with a break of line. It is also important that the last line of the file have a number and not an empty line for the program to work properly. The input file must be located on the same folder as the program and must be named **input.txt**. If the program is not able to open the **input.txt** file, you should change the **line 82** and the **line 99** and set them to only with the files' names.
