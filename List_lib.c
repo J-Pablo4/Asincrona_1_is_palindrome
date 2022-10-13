@@ -52,17 +52,6 @@ void list_append(List *list, int value_to_append)
     }
 }
 
-void print_list(List *list)
-{
-    Node *current = list->head;
-    while (current != NULL)
-    {
-        printf("[%d]->",current->value);
-        current = current->next;
-    }
-    printf("NULL\n");
-}
-
 int delete_at(List *list, int index)
 {
     if(index == 0)
@@ -88,27 +77,45 @@ int delete_at(List *list, int index)
     return value_to_return;
 }
 
-int is_palindrome(List *list)
+void is_palindrome()
 {
-    List *new = new_list();
-    Node *current = list->head;
-    int last_element = 0;
-    int first_element = 0;
-    while (current != NULL)
+    FILE *file = fopen("../input.txt", "r");
+    if(file == NULL)
     {
-        list_append(new, current->value);
-        current = current->next;
-    }
-    print_list(new);
-    while (new->count > 1)
+        printf("No se abrio el archivo\n");
+        return;
+    }else
     {
-        first_element = delete_at(new, 0);
-        last_element = delete_at(new, new->count - 1);
+        int node_value = 0;
+        int last_element;
+        int first_element;
+        List *l = new_list();
 
-        if(first_element != last_element)
-        {
-            return 0;
+        while (!feof(file)) {
+            fscanf(file, "%d", &node_value);
+            list_append(l, node_value);
         }
+        fclose(file);
+        FILE *result = fopen("../result.txt", "w");
+        if(l->count == 1)
+        {
+            fputs("True", result);
+            fclose(result);
+            return;
+        }
+        while (l->count > 1)
+        {
+            first_element = delete_at(l, 0);
+            last_element = delete_at(l, l->count - 1);
+
+            if(first_element != last_element)
+            {
+                fputs("False", result);
+                fclose(result);
+                return;
+            }
+        }
+        fputs("True", result);
+        fclose(result);
     }
-    return 1;
 }
