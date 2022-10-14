@@ -12,7 +12,7 @@ Returns **True**
 
 Returns **False**
 
-## Functions
+## Functional description
 1. `node_new(int value_to_append)`: This function **creates a node** in a **list** and set its value to the number that was inserted by the programmer. It is commonly used, when the `list_append` function is invoked.
 2. `new_list()`: This function initializes a struct **list** by allocating memory in the heap, and assigning its atributes **head** equal to **NULL** and and **count** equal to **0**. **head** is a variable where we are going to store the pointer to first node of the list, and **count** is used to acumulate the number of elements stored in the list which is going to be needed later on in our program. At the end the funcition returns the **new_list** pointer.
 3. `list_append(List *list, int value_to_append)`: This function is used to add elements to the list. It takes as arguments a list pointer and the value that the user wants to add. If the **head** is **NULL** the function calls for the function `node_new()` with **value_to_append** as an argument, and1 assigns **head** equal to the pointer of the newly created node and **adds one** to **count**. If **head** is not **NULL** the function finds the last node on the list, creates and initializes a new node, and assigns the pointer of the new node to the **next** attibute of the last node.
